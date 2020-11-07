@@ -25,6 +25,13 @@ cheerio는 소모품 정보가 포함된 html 태그를 수집한 후 필요한 
 
 ## 프로그램 구조
 
+### 작동방식
+1. Puppeteer Cluster 인스턴스를 생성합니다.
+2. 프린터 정보를 Puppeteer Cluster Queue에 전달합니다.
+3. Puppeteer Cluster 인스턴스는 각 프린터에 맞는 크롤러 함수를 호출한 후 크롤링 결과를 전달받아 배열에 저장합니다.
+4. 모든 크롤링 작업이 끝나면 Puppeteer Cluster 인스턴스를 해제합니다.
+5. 크롤링 결과가 저장된 배열을 파일로 저장합니다.
+
 ### 최상위 폴더
 `index.js` 파일은 프로그램의 시작점입니다. 프로그램을 시작하려면 `node index` 또는 `npm start` 명령어를 실행합니다.
 
