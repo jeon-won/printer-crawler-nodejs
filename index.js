@@ -1,6 +1,7 @@
 import puppeteerCluster from 'puppeteer-cluster';
 import jsonfile from 'jsonfile';
 import config from 'config';
+import saveXlsx from './services/saveXlsx.js';
 import getCurrentTime from './services/getCurrentTime.js';
 import { okiES5112 } from './crawler/okiBlack.js';
 import { okiC843 } from './crawler/okiColor.js';
@@ -74,7 +75,7 @@ const main = async () => {
         crawlingResult.push(await xeroxIV2060(page, data));
         break;
       default:
-        console.log(`${data.crawler}:`, "No illegal crawlers...");
+        console.log(`${data.crawler}:`, "No suitable crawlers...");
     }
   });
 
@@ -89,10 +90,14 @@ const main = async () => {
   await cluster.close();
 
   // 윗부분까지 비동기 코드 실행. 여기서부터 동기 코드 실행(?)
-  // 크롤링 결과를 JSON 파일로 저장
-  jsonfile.writeFile(`./result/result_${getCurrentTime()}.json`, crawlingResult)
+
+  // 파일로 저장
+  const { xlsxSave, jsonSave } = config.get("saveOptions");
+  xlsxSave ? saveXlsx(crawlingResult) : '';
+  jsonSave ? jsonfile.writeFile(`./result/result_${getCurrentTime()}.json`, crawlingResult)
     .then(() => console.log(`${crawlingResult.length} Printers crawling completed!`))
-    .catch(err => console.error(`jsonfile.writeFile(): ${err}`));
-};
+    .catch(err => console.error(`jsonfile.writeFile(): ${err}`))
+    : '';
+}
 
 main();

@@ -5,5 +5,17 @@
   },
   "puppeteerPageSettings": {
     "waitUntil": "networkidle2"
+  },
+  "excelSettings": {
+    "tonerWarning": 50,
+    "tonerAlert": 25,
+    "drumWarning": 30,
+    "drumAlert": 15,
+    "warningColor": "FFFFDAB9",
+    "alertColor": "FFFF6347"
+  },
+  "saveOptions": {
+    "xlsxSave": true,
+    "jsonSave": true
   }
 }

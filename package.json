@@ -15,6 +15,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "config": "^3.3.2",
+    "exceljs": "^4.2.0",
     "glob": "^7.1.6",
     "jsonfile": "^6.1.0",
     "puppeteer": "^5.4.1",

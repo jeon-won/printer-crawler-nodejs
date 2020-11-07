@@ -17,14 +17,14 @@ const xeroxC2265 = async (page, printer) => {
   
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      toner_c: elements[8].children[0].data,
-      toner_m: elements[11].children[0].data,
-      toner_y: elements[14].children[0].data,
-      drum_k: elements[22].children[0].data,
-      drum_c: elements[24].children[0].data,
-      drum_m: elements[26].children[0].data,
-      drum_y: elements[28].children[0].data,
+      tonerK: elements[5].children[0].data,
+      tonerC: elements[8].children[0].data,
+      tonerM: elements[11].children[0].data,
+      tonerY: elements[14].children[0].data,
+      drumK: elements[22].children[0].data,
+      drumC: elements[24].children[0].data,
+      drumM: elements[26].children[0].data,
+      drumY: elements[28].children[0].data,
       wastebox: elements[18].children[0].data,
       // transferBelt: elements[40].children[0].data, // 전사 벨트
       // fuser: elements[32].children[0].data, // 정착기(퓨저)
@@ -55,14 +55,14 @@ const xeroxC2275 = async (page, printer) => {
   
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      toner_c: elements[8].children[0].data,
-      toner_m: elements[11].children[0].data,
-      toner_y: elements[14].children[0].data,
-      drum_k: elements[22].children[0].data,
-      drum_c: elements[24].children[0].data,
-      drum_m: elements[26].children[0].data,
-      drum_y: elements[28].children[0].data,
+      tonerK: elements[5].children[0].data,
+      tonerC: elements[8].children[0].data,
+      tonerM: elements[11].children[0].data,
+      tonerY: elements[14].children[0].data,
+      drumK: elements[22].children[0].data,
+      drumC: elements[24].children[0].data,
+      drumM: elements[26].children[0].data,
+      drumY: elements[28].children[0].data,
       wastebox: elements[18].children[0].data,
       // Xerox c2275 모델은 c2263 모델과 달리 정착부, 제2 바이어스 전사롤, 전사벨트 정보가 안 보임...
     };
@@ -91,14 +91,14 @@ const xeroxC3371 = async (page, printer) => {
 
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      toner_c: elements[8].children[0].data,
-      toner_m: elements[11].children[0].data,
-      toner_y: elements[14].children[0].data,
-      drum_k: elements[22].children[0].data,
-      drum_c: elements[24].children[0].data,
-      drum_m: elements[26].children[0].data,
-      drum_y: elements[28].children[0].data,
+      tonerK: elements[5].children[0].data,
+      tonerC: elements[8].children[0].data,
+      tonerM: elements[11].children[0].data,
+      tonerY: elements[14].children[0].data,
+      drumK: elements[22].children[0].data,
+      drumC: elements[24].children[0].data,
+      drumM: elements[26].children[0].data,
+      drumY: elements[28].children[0].data,
       wastebox: elements[18].children[0].data,
       // 아래 속성들은 일부 VIC3371 모델에서 지원하지 않음...
       // stapleCartridge: elements[32].children[0].data, // 스테이플 카트리지
@@ -131,14 +131,14 @@ const xeroxC5005 = async (page, printer) => {
   
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      toner_c: elements[8].children[0].data,
-      toner_m: elements[11].children[0].data,
-      toner_y: elements[14].children[0].data,
-      drum_k: elements[22].children[0].data,
-      drum_c: elements[24].children[0].data,
-      drum_m: elements[26].children[0].data,
-      drum_y: elements[28].children[0].data,
+      tonerK: elements[5].children[0].data,
+      tonerC: elements[8].children[0].data,
+      tonerM: elements[11].children[0].data,
+      tonerY: elements[14].children[0].data,
+      drumK: elements[22].children[0].data,
+      drumC: elements[24].children[0].data,
+      drumM: elements[26].children[0].data,
+      drumY: elements[28].children[0].data,
       wastebox: elements[18].children[0].data,
       // fuser: elements[32].children[0].data, // 정착부
       // transferBeltCleaner: elements[36].children[0].data, // 전사벨트 클리너
@@ -169,15 +169,15 @@ const xeroxC5580 = async (page, printer) => {
   
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      toner_k2: elements[8].children[0].data, // 이 컬러복합기는 검정 토너를 두 개 장착함
-      toner_c: elements[11].children[0].data,
-      toner_m: elements[14].children[0].data,
-      toner_y: elements[17].children[0].data,
-      drum_k: elements[25].children[0].data,
-      drum_c: elements[27].children[0].data,
-      drum_m: elements[29].children[0].data,
-      drum_y: elements[31].children[0].data,
+      tonerK: elements[5].children[0].data,
+      tonerK2: elements[8].children[0].data, // 이 컬러복합기는 검정 토너를 두 개 장착함
+      tonerC: elements[11].children[0].data,
+      tonerM: elements[14].children[0].data,
+      tonerY: elements[17].children[0].data,
+      drumK: elements[25].children[0].data,
+      drumC: elements[27].children[0].data,
+      drumM: elements[29].children[0].data,
+      drumY: elements[31].children[0].data,
       wastebox: elements[21].children[0].data,
       // stapleCartridge: elements[35].children[0].data,
     };

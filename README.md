@@ -5,6 +5,7 @@
 
 
 ## 사용한 주요 라이브러리
+
 ### pupeteer
 네트워크 프린터의 소모품 정보를 표시하는 페이지는 대부분 자바스크립트로 구현되어 있어 동적인 크롤링이 필요합니다. puppeteer는 동적인 웹페이지 소스를 얻어오기 위해 사용합니다.
 
@@ -14,13 +15,13 @@ puppeteer는 비동기 방식으로 작동합니다. 크롤링할 프린터 대�
 자세한 사용법은 https://github.com/thomasdondorf/puppeteer-cluster 을 참고...
 
 ### cheerio
-cheerio는 소모품 정보가 포함된 html 태그를 수집한 후 필요한 정보만 추출하기 위해 사용합니다.
+cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 추출하기 위해 사용합니다.
 
 ### config
 `./config/default.json` 파일에 저장된 값을 쉽게 불러올 수 있게 해주는 라이브러리입니다.
 
 ### exceljs
-사용 예정. 엑셀 파일 생성을 위한 라이브러리. 자세한 사용법은 https://github.com/exceljs/exceljs#create-a-workbook 을 참고...
+크롤링 결과를 엑셀 파일로 저장하기 위한 라이브러리입니다. 자세한 사용법은 https://github.com/exceljs/exceljs#create-a-workbook 을 참고...
 
 
 ## 프로그램 구조
@@ -37,25 +38,41 @@ cheerio는 소모품 정보가 포함된 html 태그를 수집한 후 필요한 
 
 ### config 폴더
 * `default.json`: 프로그램 설정 정보를 담은 JSON입니다. config 라이브러리에 의해 사용됩니다.
+  - maxConcurrency: 최대 병렬 작업 수
+  - monitor: 작업 상황을 콘솔에 출력
+  - waitUntil: 네트워크가 idle 상태일 때까지 대기
+  - 이 외의 설명은 생략...
 ``` json
 {
-    "puppeteerClusterSettings": {
-        "maxConcurrency": 5, // 최대 병렬 작업 수
-        "monitor": true // 작업 상황을 콘솔에 출력
-    },
-    "puppeteerPageSettings": {
-        "waitUntil": "networkidle2" // 네트워크가 idle 상태일 때까지 대기
-    }
+  "puppeteerClusterSettings": {
+    "maxConcurrency": 5,
+    "monitor": true
+  },
+  "puppeteerPageSettings": {
+    "waitUntil": "networkidle2"
+  },
+  "excelSettings": {
+    "tonerWarning": 50,
+    "tonerAlert": 25,
+    "drumWarning": 30,
+    "drumAlert": 15,
+    "warningColor": "FFFFDAB9",
+    "alertColor": "FFFF6347"
+  },
+  "saveOptions": {
+    "xlsxSave": true,
+    "jsonSave": true
+  }
 }
 ```
 
-* `target.json`: 크롤링할 프린터 정보를 JSON 배열입니다.
+* `target.json`: 크롤링할 프린터 정보를 포함하는 JSON 배열입니다. crawler 속성에는 crawler 폴더에 있는 크롤러 함수 이름이 들어가야 합니다.
 ```json
 [
   {
     "dept": "Department",
-    "model": "OKI C843",
-    "crawler": "okiC843", // crawler 속성에는 crawler 폴더에 있는 크롤러 함수 이름이 들어가야 합니다.
+    "model": "Printer Model",
+    "crawler": "okiC843",
     "url": "http://192.168.100.1/printer/suppliessum.htm"
   },
   // ...
@@ -66,6 +83,7 @@ cheerio는 소모품 정보가 포함된 html 태그를 수집한 후 필요한 
 
 ### services 폴더
 * `getCurrentTime.js`: 현재시간(년월일시분초) 값을 반환합니다. 크롤링 결과를 저장할 때 현재 시간을 얻어오기 위해 사용합니다.
+* `saveXlsx.js`: 크롤링 결과를 엑셀 파일로 저장합니다.
 
 
 ## 크롤러 함수와 호환되는 프린터 모델

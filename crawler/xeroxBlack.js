@@ -17,8 +17,8 @@ const xeroxDP3055 = async (page, printer) => {
 
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[7].children[1].data.trim(), // 이 프린터는 드럼토너 일체형
-      maintenanceKit: elements[10].children[0].data, // 유지보수 키트
+      tonerK: elements[7].children[1].data.trim(), // 이 프린터는 드럼토너 일체형
+      // maintenanceKit: elements[10].children[0].data, // 유지보수 키트
     };
   } 
   
@@ -45,8 +45,8 @@ const xeroxII3005 = async (page, printer) => {
 
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[3].children[0].data,
-      drum_k: elements[7].children[0].data,
+      tonerK: elements[3].children[0].data,
+      drumK: elements[7].children[0].data,
     };
   } 
   
@@ -73,8 +73,8 @@ const xeroxII3007 = async (page, printer) => {
   
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      drum_k: elements[9].children[0].data,
+      tonerK: elements[5].children[0].data,
+      drumK: elements[9].children[0].data,
     };
   }
 
@@ -101,8 +101,8 @@ const xeroxIV2060 = async (page, printer) => {
 
     supplyInfo = {
       dept, model, url,
-      toner_k: elements[5].children[0].data,
-      drum_k: elements[9].children[0].data,
+      tonerK: elements[5].children[0].data,
+      drumK: elements[9].children[0].data,
     };
   }
 
