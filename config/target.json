@@ -1,0 +1,92 @@
+[
+  {
+    "dept": "Dept 1",
+    "model": "OKI C843",
+    "crawler": "okiC843",
+    "url": "https://naver.com"
+  },
+  {
+    "dept": "Dept 2",
+    "model": "OKI ES5112",
+    "crawler": "okiES5112",
+    "url": "https://daum.net"
+  },
+  {
+    "dept": "Dept 3",
+    "model": "Sindoh CM30091",
+    "crawler": "sindohD420",
+    "url": "https://namu.wiki"
+  },
+  {
+    "dept": "Dept 4",
+    "model": "Sindoh D410",
+    "crawler": "sindohD410",
+    "url": "https://clien.net"
+  },
+  {
+    "dept": "Dept 5",
+    "model": "Sindoh D710",
+    "crawler": "sindohD710",
+    "url": "https://google.com"
+  },
+  {
+    "dept": "Dept 6",
+    "model": "Sindoh D720",
+    "crawler": "sindohD720",
+    "url": "https://kakao.com"
+  },
+  {
+    "dept": "Dept 7",
+    "model": "Xerox DCIVC2265",
+    "crawler": "xeroxC2265",
+    "url": "https://brunch.co.kr"
+  },
+  {
+    "dept": "Dept 8",
+    "model": "Xerox DCIVC2275",
+    "crawler": "xeroxC2275",
+    "url": "https://naver.com"
+  },
+  {
+    "dept": "Dept 9",
+    "model": "Xerox DCIVC3371",
+    "crawler": "xeroxC3371",
+    "url": "https://google.com"
+  },
+  {
+    "dept": "Dept 10",
+    "model": "Xerox DPC5005d",
+    "crawler": "xeroxC5005",
+    "url": "https://kakao.com"
+  },
+  {
+    "dept": "Dept 11",
+    "model": "Xerox APVC5580",
+    "crawler": "xeroxC5580",
+    "url": "https://namu.wiki"
+  },
+  {
+    "dept": "Dept 12",
+    "model": "Xerox DP3055",
+    "crawler": "xeroxDP3055",
+    "url": "https://daum.net"
+  },
+  {
+    "dept": "Dept 13",
+    "model": "Xerox DCII3005",
+    "crawler": "xeroxII3005",
+    "url": "https://nate.com"
+  },
+  {
+    "dept": "Dept 14",
+    "model": "Xerox DCII3007",
+    "crawler": "xeroxII3007",
+    "url": "https://zum.com"
+  },
+  {
+    "dept": "Dept 15",
+    "model": "Xerox DCIV2060",
+    "crawler": "xeroxIV2060",
+    "url": "https://kakao.com"
+  }
+]

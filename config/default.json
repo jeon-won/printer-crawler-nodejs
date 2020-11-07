@@ -1,0 +1,9 @@
+{
+  "puppeteerClusterSettings": {
+    "maxConcurrency": 5,
+    "monitor": true
+  },
+  "puppeteerPageSettings": {
+    "waitUntil": "networkidle2"
+  }
+}
