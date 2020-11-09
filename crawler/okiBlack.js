@@ -2,14 +2,20 @@ import cheerio from "cheerio";
 import config from 'config';
 const { waitUntil } = config.get("puppeteerPageSettings");
 
-/* OKI ES5112 흑백프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: OKI ES5112
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const okiES5112 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
 
   try {
     await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    // await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용?
+    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용?
+    await page.waitForSelector("html"); // Execution context was destroyed, most likely because of a navigation. 에러 해결 코드?
     const html = await page.content(); // html 소스 가져오기
     
     const $ = cheerio.load(html, { decodeEntities: false });

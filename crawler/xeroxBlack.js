@@ -2,14 +2,20 @@ import cheerio from "cheerio";
 import config from 'config';
 const { waitUntil } = config.get("puppeteerPageSettings");
 
-/* Xerox DP3055 흑밸프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DP3055
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxDP3055 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
 
   try {
     await page.goto(url, { waitUntil }); 
-    // await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForSelector("html");
     const html = await page.content(); // html 소스 가져오기
 
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
@@ -30,14 +36,20 @@ const xeroxDP3055 = async (page, printer) => {
 }
 
 
-/* Xerox DCII3005 흑백프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DCII3005
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxII3005 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
 
   try {
     await page.goto(url, { waitUntil }); 
-    // await page.waitForTimeout(5000); 
+    await page.waitForTimeout(5000); 
+    await page.waitForSelector("html");
     const html = await page.content(); 
 
     const $ = cheerio.load(html, { decodeEntities: false }); 
@@ -58,14 +70,20 @@ const xeroxII3005 = async (page, printer) => {
 }
 
 
-/* Xerox DCII3007 흑백프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DCII30067
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxII3007 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = [];
   
   try {
     await page.goto(url, { waitUntil });
-    // await page.waitForTimeout(5000);
+    await page.waitForTimeout(5000);
+    await page.waitForSelector("html");
     const html = await page.content();
   
     const $ = cheerio.load(html, { decodeEntities: false });
@@ -86,14 +104,20 @@ const xeroxII3007 = async (page, printer) => {
 };
 
 
-/* Xerox DCIV2060 흑백프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DCIV2060, DCIV3060, DCIV3065
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxIV2060 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
   
   try {
     await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    // await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForSelector("html");
     const html = await page.content(); // html 소스 가져옴
 
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환

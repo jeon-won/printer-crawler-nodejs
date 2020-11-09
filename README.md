@@ -1,7 +1,7 @@
 # printer-crawler-nodejs
 
 ## 개요
-각종 네트워크 프린터의 소모품 정보(토너, 드럼 등의 잔량)를 수집하는 Node.js 프로그램입니다. **크롤링 결과를 JSON으로 저장하는 기능만 일단 구현해놓고, 엑셀 파일로 저장하는 기능은 추후에...**
+각종 네트워크 프린터의 소모품 정보(토너, 드럼 등의 잔량)를 수집하는 Node.js 프로그램입니다. 자바스크립트를 배워볼 겸...
 
 
 ## 사용한 주요 라이브러리
@@ -40,8 +40,9 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 * `default.json`: 프로그램 설정 정보를 담은 JSON입니다. config 라이브러리에 의해 사용됩니다.
   - maxConcurrency: 최대 병렬 작업 수
   - monitor: 작업 상황을 콘솔에 출력
-  - waitUntil: 네트워크가 idle 상태일 때까지 대기
-  - 이 외의 설명은 생략...
+  - waitUntil: 네트워크 대기 설정 (networkidle2: 네트워크가 idle 상태일 때까지 대기)
+  - Warning(주의) 및 Alert(경고) 수치: 해당 수치 이하이면 엑셀파일에 색을 표시함
+  - saveOption: 해당 파일로 저장할 것인지 여부
 ``` json
 {
   "puppeteerClusterSettings": {
@@ -74,8 +75,8 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
     "model": "Printer Model",
     "crawler": "okiC843",
     "url": "http://192.168.100.1/printer/suppliessum.htm"
-  },
-  // ...
+  }
+]
 ```
 
 ### crawler 폴더
@@ -83,11 +84,12 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 
 ### services 폴더
 * `getCurrentTime.js`: 현재시간(년월일시분초) 값을 반환합니다. 크롤링 결과를 저장할 때 현재 시간을 얻어오기 위해 사용합니다.
-* `saveXlsx.js`: 크롤링 결과를 엑셀 파일로 저장합니다.
+* `getHtmlSource.js`: html 소스를 반환합니다. 테스트 용으로 만든 함수입니다...
+* `save.js`: saveJson() 함수와 saveXlsx() 함수가 크롤링 결과를 파일로 저장합니다.
 
 
 ## 크롤러 함수와 호환되는 프린터 모델
-같은 모델끼리도 소모품 정보가 다르게 보여지는 경우가 있어 호환이 되지 않을 수 있습니다.
+같은 모델끼리도 소모품 정보가 다르게 보여지는 경우가 있고, 펌웨어(?) 종류에 따라 소모품 표시 방식이 다르기 때문에 호환이 되지 않을 수 있습니다.
 
 ### okiBlack.js
 * okiES5112(): OKI ES5112
@@ -96,8 +98,9 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 * okiC843(): OKI C833, C843
 
 ### sindohColor.js
-* sindohD410(): Sindoh D410, D710, 일부 D420
+* sindohD410(): Sindoh D410, D710
 * sindohD420(): Sindoh D420, D422 (CM3091)
+* sindoh2ndD420(): 일부 Sindoh D420, D422
 * sindohD720(): Sindoh D270, D722 (CM6011)
 
 ### xeroxBlack.js

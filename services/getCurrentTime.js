@@ -1,7 +1,8 @@
-// 현재 시간을 년월일시분초로 얻어옴
-// 참고: https://gist.github.com/froop/962669
 
-// yyyymmddhhmmss
+/**
+ * 현재 시간의 년월일시분초(yyyymmddhhmmss) 값을 반환합니다. 
+ * (참고: https://gist.github.com/froop/962669)
+ */
 const getCurrentTime = () => {
 	var now = new Date();
 	var res = "" + now.getFullYear() + padZero(now.getMonth() + 1)
@@ -12,11 +13,11 @@ const getCurrentTime = () => {
 
 const padZero = (num) => {
 	var result;
-	if (num < 10) {
+	if (num < 10)
 		result = "0" + num;
-	} else {
+	else
 		result = "" + num;
-	}
+	
 	return result;
 }
 

@@ -1,13 +1,12 @@
 import puppeteerCluster from 'puppeteer-cluster';
 import jsonfile from 'jsonfile';
 import config from 'config';
-import saveXlsx from './services/saveXlsx.js';
-import getCurrentTime from './services/getCurrentTime.js';
 import { okiES5112 } from './crawler/okiBlack.js';
 import { okiC843 } from './crawler/okiColor.js';
-import { sindohD410, sindohD420, sindohD720 } from './crawler/sindohColor.js';
+import { sindohD410, sindohD420, sindoh2ndD420, sindohD720 } from './crawler/sindohColor.js';
 import { xeroxDP3055, xeroxII3005, xeroxII3007, xeroxIV2060 } from './crawler/xeroxBlack.js';
 import { xeroxC2265, xeroxC2275, xeroxC3371, xeroxC5005, xeroxC5580 } from './crawler/xeroxColor.js';
+import { saveJson, saveXlsx } from './services/save.js';
 
 const main = async () => {
   // 크롤링 최종 결과를 담을 배열 선언
@@ -41,8 +40,13 @@ const main = async () => {
         crawlingResult.push(await sindohD410(page, data));
         break;
       case "sindohD420":
-      case "sindohD710":
         crawlingResult.push(await sindohD420(page, data));
+        break;
+      case "sindoh2ndD420":
+        crawlingResult.push(await sindoh2ndD420(page, data));
+        break;
+      case "sindohD710":
+        crawlingResult.push(await sindohD410(page, data));
         break;
       case "sindohD720":
         crawlingResult.push(await sindohD720(page, data));
@@ -90,14 +94,12 @@ const main = async () => {
   await cluster.close();
 
   // 윗부분까지 비동기 코드 실행. 여기서부터 동기 코드 실행(?)
+  crawlingResult.sort((a, b) => a.model < b.model ? -1 : 1 );
 
   // 파일로 저장
-  const { xlsxSave, jsonSave } = config.get("saveOptions");
-  xlsxSave ? saveXlsx(crawlingResult) : '';
-  jsonSave ? jsonfile.writeFile(`./result/result_${getCurrentTime()}.json`, crawlingResult)
-    .then(() => console.log(`${crawlingResult.length} Printers crawling completed!`))
-    .catch(err => console.error(`jsonfile.writeFile(): ${err}`))
-    : '';
+  const { xlsx, json } = config.get("saveOptions");
+  json ? saveJson(crawlingResult) : '';
+  xlsx ? saveXlsx(crawlingResult) : '';
 }
 
 main();

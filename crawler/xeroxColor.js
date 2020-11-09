@@ -2,14 +2,20 @@ import cheerio from "cheerio";
 import config from 'config';
 const { waitUntil } = config.get("puppeteerPageSettings");
 
-/* Xerox DCIVC2265 컬러복합기 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DCIVC2265
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxC2265 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
 
   try {
     await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    // await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForSelector("html");
     const html = await page.content(); // html 소스 가져오기
   
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
@@ -40,14 +46,20 @@ const xeroxC2265 = async (page, printer) => {
 }
 
 
-/* Xerox DCIVC2275 컬러복합기 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: APVCC275, APVC3373, DCVC3374, DCVC3374
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxC2275 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
 
   try {
     await page.goto(url, { waitUntil }); 
-    // await page.waitForTimeout(5000); 
+    await page.waitForTimeout(5000); 
+    await page.waitForSelector("html");
     const html = await page.content(); 
   
     const $ = cheerio.load(html, { decodeEntities: false }); 
@@ -76,7 +88,12 @@ const xeroxC2275 = async (page, printer) => {
 };
 
 
-/* Xerox DCVIC3371 컬러복합기 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DCIVC3371
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxC3371 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
@@ -84,6 +101,7 @@ const xeroxC3371 = async (page, printer) => {
   try {
     await page.goto(url, { waitUntil });
     await page.waitForTimeout(5000); 
+    await page.waitForSelector("html");
     const html = await page.content(); 
 
     const $ = cheerio.load(html, { decodeEntities: false }); 
@@ -116,7 +134,12 @@ const xeroxC3371 = async (page, printer) => {
 };
 
 
-/* Xeros DPC5005 컬러프린터 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox DPC5005
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxC5005 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
@@ -124,6 +147,7 @@ const xeroxC5005 = async (page, printer) => {
   try {
     await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
     await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForSelector("html");
     const html = await page.content(); // html 소스 가져옴
   
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
@@ -154,7 +178,12 @@ const xeroxC5005 = async (page, printer) => {
 };
 
 
-/* Xerox APVC5580 컬러복합기 소모품 정보 크롤링 */
+/**
+ * 호환되는 프린터 모델: Xerox APVC5580, DCVC5585
+ * 
+ * @param {puppeteer.Page} page 
+ * @param {Object} printer
+ */
 const xeroxC5580 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = {};
@@ -162,6 +191,7 @@ const xeroxC5580 = async (page, printer) => {
   try {
     await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
     await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.waitForSelector("html");
     const html = await page.content(); // html 소스 가져옴
   
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
