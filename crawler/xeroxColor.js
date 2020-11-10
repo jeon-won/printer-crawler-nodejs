@@ -47,7 +47,7 @@ const xeroxC2265 = async (page, printer) => {
 
 
 /**
- * 호환되는 프린터 모델: APVCC275, APVC3373, DCVC3374, DCVC3374
+ * 호환되는 프린터 모델: APVCC275, APVC3373, DCVC3374
  * 
  * @param {puppeteer.Page} page 
  * @param {Object} printer
@@ -145,14 +145,14 @@ const xeroxC5005 = async (page, printer) => {
   let supplyInfo = {};
     
   try {
-    await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.goto(url, { waitUntil });
+    await page.waitForTimeout(5000);
     await page.waitForSelector("html");
-    const html = await page.content(); // html 소스 가져옴
+    const html = await page.content();
   
-    const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
+    const $ = cheerio.load(html, { decodeEntities: false });
     const elements = $("small"); // small 태그 전부 가져옴
-  
+
     supplyInfo = {
       dept, model, url,
       tonerK: elements[5].children[0].data,
@@ -189,14 +189,14 @@ const xeroxC5580 = async (page, printer) => {
   let supplyInfo = {};
 
   try {
-    await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.goto(url, { waitUntil });
+    await page.waitForTimeout(5000);
     await page.waitForSelector("html");
-    const html = await page.content(); // html 소스 가져옴
+    const html = await page.content();
   
-    const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
+    const $ = cheerio.load(html, { decodeEntities: false });
     const elements = $("small"); // small 태그 전부 가져옴
-  
+      
     supplyInfo = {
       dept, model, url,
       tonerK: elements[5].children[0].data,

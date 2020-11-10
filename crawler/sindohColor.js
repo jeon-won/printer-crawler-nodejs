@@ -32,11 +32,11 @@ const sindohD410 = async (page, printer) => {
         drumC: elements[14].children[0].data.trim(),
         drumM: elements[19].children[0].data.trim(),
         drumY: elements[24].children[0].data.trim(),
+        wastebox: elements2[21].children[0].data.trim(), // 폐토너통
         // filter: elements2[2].children[0].data.trim(), // 필터. D420(CM3091)에선 안 보였음...
         // transferBelt: elements2[7].children[0].data.trim(), // 전사 벨트 유니트
         // fuser: elements2[12].children[0].data.trim(), // 정착 유니트
         // transferRoller: elements2[17].children[0].data.trim(), // 전사 롤러 유니트
-        wastebox: elements2[21].children[0].data.trim(), // 폐토너통
       };
     } 
     
@@ -61,7 +61,7 @@ const sindohD420 = async (page, printer) => {
 
   try {
     await page.goto(url, { waitUntil });
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(15000); // 이 프린터는 응답이 느려서 그런지 오랫동안 대기...
     await page.waitForSelector("html");
     const html = await page.content();
 
@@ -104,7 +104,7 @@ const sindoh2ndD420 = async (page, printer) => {
 
   try {
     await page.goto(url, { waitUntil });
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(15000); // 이 프린터는 응답이 느려서 그런지 오랫동안 대기...
     await page.waitForSelector("html");
     const html = await page.content();
 
@@ -176,6 +176,7 @@ const sindohD720 = async (page, printer) => {
       drumC: elements[4].attribs.value,
       drumM: elements[5].attribs.value,
       drumY: elements[6].attribs.value,
+      wastebox: elements2[17].children[0].data, // 폐토너통
       // developerK: elements[11].attribs.value, // 현상유닛(블랙)
       // developerC: elements[8].attribs.value, // 현상유닛(시안)
       // developerM: elements[9].attribs.value, // 현상유닛(마젠타)
@@ -184,8 +185,7 @@ const sindohD720 = async (page, printer) => {
       // transferBelt: elements[13].attribs.value, // 전사 벨트 유니트
       // transferRoller: elements[14].attribs.value, // 전사 롤러 유니트
       // tonerFilter: elements[15].attribs.value, // 토너 필터
-      wastebox: elements2[17].children[0].data, // 폐토너통
-      // 스테이플, 새들 스테플 카트리지1, 새들 스테플 카트리지2는 일부 기기에서 표시 안 돼서 미구현...
+      // 스테이플, 새들 스테플 카트리지1, 새들 스테플 카트리지2는 일부 기기에서 표시 안 됨...
     };
   } 
   

@@ -10,7 +10,7 @@ import getCurrentTime from './getCurrentTime.js';
  */
 const saveJson = (data) => {
   jsonfile.writeFile(`./result/result_${getCurrentTime()}.json`, data)
-  .then(() => console.log(`saveJson(): ${data.length} Printers crawling completed!`))
+  .then(() => console.log(`saveJson(): ${data.length} Printer(s) crawling completed!`))
   .catch(err => console.error(`saveJson(): ${err}`));
 }
 
@@ -26,7 +26,10 @@ const saveXlsx = (data) => {
   const workbook = new ExcelJS.Workbook();
   const worksheet = workbook.addWorksheet('Result');
   worksheet.autoFilter = { from: 'A1', to: 'O1', }; // 필터 설정
-  worksheet.views = [{ state: 'frozen', ySplit: 1 }]; // 틀 고정
+  worksheet.views = [{ 
+    state: 'frozen', ySplit: 1,  // 틀 고정
+    zoomScale: 85 // 확대/축소
+  }];
   
   // 열 추가
   worksheet.columns = [
@@ -52,7 +55,7 @@ const saveXlsx = (data) => {
   data.forEach(printer => {
     const { 
       dept, model, url, 
-      tonerK, tonerC, tonerM, tonerY, 
+      tonerK, tonerK2, tonerC, tonerM, tonerY, 
       drumK, drumC, drumM, drumY, 
       wastebox, error } = printer;
 
@@ -60,6 +63,7 @@ const saveXlsx = (data) => {
       count: ++count,
       dept, model,  url,
       tonerK: getOnlyNumber(tonerK) ? parseInt(getOnlyNumber(tonerK)) : tonerK, 
+      tonerK2: getOnlyNumber(tonerK2) ? parseInt(getOnlyNumber(tonerK2)) : tonerK2, 
       tonerC: getOnlyNumber(tonerC) ? parseInt(getOnlyNumber(tonerC)) : tonerC, 
       tonerM: getOnlyNumber(tonerM) ? parseInt(getOnlyNumber(tonerM)) : tonerM, 
       tonerY: getOnlyNumber(tonerY) ? parseInt(getOnlyNumber(tonerY)) : tonerY, 
@@ -67,15 +71,15 @@ const saveXlsx = (data) => {
       drumC: getOnlyNumber(drumC) ? parseInt(getOnlyNumber(drumC)) : drumC, 
       drumM: getOnlyNumber(drumM) ? parseInt(getOnlyNumber(drumM)) : drumM, 
       drumY: getOnlyNumber(drumY) ? parseInt(getOnlyNumber(drumY)) : drumY, 
-      wastebox, error
+      wastebox, 
+      error
     });
   
     // D열(URL)에 함수(formula) 사용
     worksheet.getCell(`D${count+1}`).value = { formula: `HYPERLINK("${url}")` };
   });
   
-  // 컬럼 사이즈 자동 설정
-  // https://stackoverflow.com/questions/63189741/how-to-autosize-column-width-in-exceljs
+  // 컬럼 사이즈 자동 설정(https://stackoverflow.com/questions/63189741/how-to-autosize-column-width-in-exceljs)
   worksheet.columns.forEach(function (column, i) {
     var maxLength = 0;
     column["eachCell"]({ includeEmpty: true }, function (cell) {
@@ -141,7 +145,7 @@ const saveXlsx = (data) => {
   
   // 엑셀 파일로 저장
   workbook.xlsx.writeFile(`./result/result_${getCurrentTime()}.xlsx`);
-  console.log(`saveJson(): ${count} Printers crawling completed!`);
+  console.log(`saveXlsx(): ${count} Printer(s) crawling completed!`);
 }
 
 /**

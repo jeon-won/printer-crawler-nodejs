@@ -1,6 +1,6 @@
 {
   "puppeteerClusterSettings": {
-    "maxConcurrency": 5,
+    "maxConcurrency": 15,
     "monitor": true
   },
   "puppeteerPageSettings": {
@@ -15,7 +15,7 @@
     "alertColor": "FFFF6347"
   },
   "saveOptions": {
-    "xlsxSave": true,
-    "jsonSave": true
+    "xlsx": true,
+    "json": true
   }
 }

@@ -4,7 +4,7 @@ import config from 'config';
 import { okiES5112 } from './crawler/okiBlack.js';
 import { okiC843 } from './crawler/okiColor.js';
 import { sindohD410, sindohD420, sindoh2ndD420, sindohD720 } from './crawler/sindohColor.js';
-import { xeroxDP3055, xeroxII3005, xeroxII3007, xeroxIV2060 } from './crawler/xeroxBlack.js';
+import { xeroxDP3055, xeroxII3005, xeroxIII3007, xeroxIV2060 } from './crawler/xeroxBlack.js';
 import { xeroxC2265, xeroxC2275, xeroxC3371, xeroxC5005, xeroxC5580 } from './crawler/xeroxColor.js';
 import { saveJson, saveXlsx } from './services/save.js';
 
@@ -72,8 +72,8 @@ const main = async () => {
       case "xeroxII3005":
         crawlingResult.push(await xeroxII3005(page, data));
         break;
-      case "xeroxII3007":
-        crawlingResult.push(await xeroxII3007(page, data));
+      case "xeroxIII3007":
+        crawlingResult.push(await xeroxIII3007(page, data));
         break;
       case "xeroxIV2060":
         crawlingResult.push(await xeroxIV2060(page, data));
@@ -94,6 +94,8 @@ const main = async () => {
   await cluster.close();
 
   // 윗부분까지 비동기 코드 실행. 여기서부터 동기 코드 실행(?)
+
+  // 프린터 모델명 기준 정렬
   crawlingResult.sort((a, b) => a.model < b.model ? -1 : 1 );
 
   // 파일로 저장

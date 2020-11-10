@@ -1,7 +1,7 @@
 {
   "name": "printer-crawler-nodejs",
-  "version": "0.0.1",
-  "description": "Printer Crawler",
+  "version": "1.0.0",
+  "description": "각종 네트워크 프린터의 소모품 정보(토너, 드럼 등의 잔량)를 수집하는 Node.js 프로그램",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

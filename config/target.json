@@ -1,92 +1,116 @@
 [
   {
-    "dept": "Dept 1",
+    "url": "http://192.168.0.1/printer/suppliessum.htm",
+    "model": "OKI C833",
+    "dept": "정통보신과",
+    "crawler": "okiC843"
+  },
+  {
+    "url": "http://192.168.0.2/printer/suppliessum.htm",
     "model": "OKI C843",
-    "crawler": "okiC843",
-    "url": "https://naver.com"
+    "dept": "민여원권과",
+    "crawler": "okiC843"
   },
   {
-    "dept": "Dept 2",
+    "url": "http://192.168.0.3/printer/suppliessum.htm",
     "model": "OKI ES5112",
-    "crawler": "okiES5112",
-    "url": "https://daum.net"
+    "dept": "지경역제과",
+    "crawler": "okiES5112"
   },
   {
-    "dept": "Dept 3",
-    "model": "Sindoh CM30091",
-    "crawler": "sindohD420",
-    "url": "https://namu.wiki"
+    "url": "http://192.168.0.4/wcd/system_consumable.xml",
+    "model": "Sindoh D412",
+    "dept": "국관제광과",
+    "crawler": "sindohD410"
   },
   {
-    "dept": "Dept 4",
-    "model": "Sindoh D410",
-    "crawler": "sindohD410",
-    "url": "https://clien.net"
+    "url": "http://192.168.0.5/wcd/system_consumable.xml",
+    "model": "Sindoh D420",
+    "dept": "문체화육과",
+    "crawler": "sindohD420"
   },
   {
-    "dept": "Dept 5",
-    "model": "Sindoh D710",
-    "crawler": "sindohD710",
-    "url": "https://google.com"
+    "url": "http://192.168.0.6/wcd/system_consumable.xml",
+    "model": "Sindoh D711",
+    "dept": "재안난전과",
+    "crawler": "sindohD710"
   },
   {
-    "dept": "Dept 6",
+    "url": "http://192.168.0.7/wcd/system_consumable.xml",
     "model": "Sindoh D720",
-    "crawler": "sindohD720",
-    "url": "https://kakao.com"
+    "dept": "감당사당관",
+    "crawler": "sindohD720"
   },
   {
-    "dept": "Dept 7",
-    "model": "Xerox DCIVC2265",
-    "crawler": "xeroxC2265",
-    "url": "https://brunch.co.kr"
+    "url": "http://192.168.0.8/ews/status/statsupl.htm",
+    "model": "Xerox DocuPrint 3055",
+    "dept": "혁도신시기획과",
+    "crawler": "xeroxDP3055"
   },
   {
-    "dept": "Dept 8",
-    "model": "Xerox DCIVC2275",
-    "crawler": "xeroxC2275",
-    "url": "https://naver.com"
+    "url": "http://192.168.0.9/stsply.htm",
+    "model": "Xerox DocuCentre-II 3005",
+    "dept": "홍담보당관",
+    "crawler": "xeroxII3005"
   },
   {
-    "dept": "Dept 9",
-    "model": "Xerox DCIVC3371",
-    "crawler": "xeroxC3371",
-    "url": "https://google.com"
+    "url": "http://192.168.0.10/stsply.htm",
+    "model": "Xerox DocuCentre-III 3007 ",
+    "dept": "자행치정과",
+    "crawler": "xeroxIII3007"
   },
   {
-    "dept": "Dept 10",
-    "model": "Xerox DPC5005d",
-    "crawler": "xeroxC5005",
-    "url": "https://kakao.com"
+    "url": "http://192.168.0.11/stsply.htm",
+    "model": "Xerox DocuCentre-IV 2060",
+    "dept": "기예획산과",
+    "crawler": "xeroxIV2060"
   },
   {
-    "dept": "Dept 11",
-    "model": "Xerox APVC5580",
-    "crawler": "xeroxC5580",
-    "url": "https://namu.wiki"
+    "url": "http://192.168.0.12/stsply.htm",
+    "model": "Xerox DocuCentre-IV C2265",
+    "dept": "세행무정과",
+    "crawler": "xeroxC2265"
   },
   {
-    "dept": "Dept 12",
-    "model": "Xerox DP3055",
-    "crawler": "xeroxDP3055",
-    "url": "https://daum.net"
+    "url": "http://192.168.0.13/stsply.htm",
+    "model": "Xerox ApeosPort-V C2275",
+    "dept": "세1무과",
+    "crawler": "xeroxC2275"
   },
   {
-    "dept": "Dept 13",
-    "model": "Xerox DCII3005",
-    "crawler": "xeroxII3005",
-    "url": "https://nate.com"
+    "url": "http://192.168.0.14/stsply.htm",
+    "model": "Xerox ApeosPort-V C3373",
+    "dept": "세2무과",
+    "crawler": "xeroxC2275"
   },
   {
-    "dept": "Dept 14",
-    "model": "Xerox DCII3007",
-    "crawler": "xeroxII3007",
-    "url": "https://zum.com"
+    "url": "http://192.168.0.15/stsply.htm",
+    "model": "Xerox DocuCentre-V C3376",
+    "dept": "교협육력과",
+    "crawler": "xeroxC2275"
   },
   {
-    "dept": "Dept 15",
-    "model": "Xerox DCIV2060",
-    "crawler": "xeroxIV2060",
-    "url": "https://kakao.com"
+    "url": "http://192.168.0.16/stsply.htm",
+    "model": "Xerox DocuCentre-VI C3371",
+    "dept": "주사거업과",
+    "crawler": "xeroxC3371"
+  },
+  {
+    "url": "http://192.168.0.17/stsply.htm",
+    "model": "Xerox DocuPrint C5005d",
+    "dept": "의사회무국",
+    "crawler": "xeroxC5005"
+  },
+  {
+    "url": "http://192.168.0.18/stsply.htm",
+    "model": "Xerox ApeosPort-V C5580 T2",
+    "dept": "공녹원지과",
+    "crawler": "xeroxC5580"
+  },
+  {
+    "url": "http://192.168.0.19/stsply.htm",
+    "model": "Xerox DocuCentre-V C5585",
+    "dept": "주관차리과",
+    "crawler": "xeroxC5580"
   }
 ]

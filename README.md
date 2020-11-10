@@ -1,7 +1,7 @@
 # printer-crawler-nodejs
 
 ## 개요
-각종 네트워크 프린터의 소모품 정보(토너, 드럼 등의 잔량)를 수집하는 Node.js 프로그램입니다. 자바스크립트를 배워볼 겸...
+각종 네트워크 프린터의 소모품 정보(토너, 드럼 등의 잔량)를 수집하는 Node.js 프로그램입니다. 자바스크립트를 배워볼 겸 겸사겸사...
 
 
 ## 사용한 주요 라이브러리
@@ -15,13 +15,13 @@ puppeteer는 비동기 방식으로 작동합니다. 크롤링할 프린터 대�
 자세한 사용법은 https://github.com/thomasdondorf/puppeteer-cluster 을 참고...
 
 ### cheerio
-cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 추출하기 위해 사용합니다.
+cheerio는 html 소스에서 원하는 정보만 추출하기 위해 사용합니다.
 
 ### config
 `./config/default.json` 파일에 저장된 값을 쉽게 불러올 수 있게 해주는 라이브러리입니다.
 
 ### exceljs
-크롤링 결과를 엑셀 파일로 저장하기 위한 라이브러리입니다. 자세한 사용법은 https://github.com/exceljs/exceljs#create-a-workbook 을 참고...
+엑셀 파일을 생성하기 위한 라이브러리입니다. 자세한 사용법은 https://github.com/exceljs/exceljs#create-a-workbook 을 참고...
 
 
 ## 프로그램 구조
@@ -61,8 +61,8 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
     "alertColor": "FFFF6347"
   },
   "saveOptions": {
-    "xlsxSave": true,
-    "jsonSave": true
+    "xlsx": true,
+    "json": true
   }
 }
 ```
@@ -84,7 +84,7 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 
 ### services 폴더
 * `getCurrentTime.js`: 현재시간(년월일시분초) 값을 반환합니다. 크롤링 결과를 저장할 때 현재 시간을 얻어오기 위해 사용합니다.
-* `getHtmlSource.js`: html 소스를 반환합니다. 테스트 용으로 만든 함수입니다...
+* `getHtmlSource.js`: html 소스를 반환합니다. (테스트 용으로 만든 함수).
 * `save.js`: saveJson() 함수와 saveXlsx() 함수가 크롤링 결과를 파일로 저장합니다.
 
 
@@ -94,12 +94,12 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 ### okiBlack.js
 * okiES5112(): OKI ES5112
 
-### okiColir.js
+### okiColor.js
 * okiC843(): OKI C833, C843
 
 ### sindohColor.js
-* sindohD410(): Sindoh D410, D710
-* sindohD420(): Sindoh D420, D422 (CM3091)
+* sindohD410(): Sindoh D410, D711
+* sindohD420(): Sindoh D420 (CM3091)
 * sindoh2ndD420(): 일부 Sindoh D420, D422
 * sindohD720(): Sindoh D270, D722 (CM6011)
 
@@ -107,11 +107,11 @@ cheerio는 소모품 정보가 포함된 html 태그에서 필요한 정보만 �
 * xeroxDP3055(): Xerox DocuPrint 3055
 * xeroxII3005(): Xerox DocuCentre-II 3005
 * xeroxII3007(): Xerox DocuCentre-II 3007
-* xeroxIV2060(): Xerox DocuCentre-IV 2060
+* xeroxIV2060(): Xerox DocuCentre-IV 2060, DocuCentre-IV 3060, DocuCentre-IV 3065
 
 ### xeroxColor.js
 * xeroxC2265(): Xerox DocuCentre-IV C2265
-* xeroxC2275(): Xerox ApeosPort-V C2275, ApeosPort-V C3373, DocuCentre-V C3374, DocuCentre-V C3374
+* xeroxC2275(): Xerox ApeosPort-V C2275, ApeosPort-V C3373, DocuCentre-V C3374, DocuCentre-V C3374, ApeosPort-V C3376
 * xeroxC3371(): Xerox DocuCentre-VI C3371
 * xeroxC5005(): Xerox DocuPrint C5005
 * xeroxC5580(): Xerox ApeosPort-V C5580, DocuCentre-V C5585

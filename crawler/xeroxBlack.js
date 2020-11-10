@@ -19,7 +19,7 @@ const xeroxDP3055 = async (page, printer) => {
     const html = await page.content(); // html 소스 가져오기
 
     const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
-    const elements = $("font"); // small 태그 전부 가져옴
+    const elements = $("font"); // font 태그 전부 가져옴
 
     supplyInfo = {
       dept, model, url,
@@ -76,7 +76,7 @@ const xeroxII3005 = async (page, printer) => {
  * @param {puppeteer.Page} page 
  * @param {Object} printer
  */
-const xeroxII3007 = async (page, printer) => {
+const xeroxIII3007 = async (page, printer) => {
   const { dept, model, url } = printer;
   let supplyInfo = [];
   
@@ -115,12 +115,12 @@ const xeroxIV2060 = async (page, printer) => {
   let supplyInfo = {};
   
   try {
-    await page.goto(url, { waitUntil }); // 네트워크가 idle 상태일 때까지 대기
-    await page.waitForTimeout(5000); // 외부 리소스 가져오는 시간 대기용
+    await page.goto(url, { waitUntil });
+    await page.waitForTimeout(5000);
     await page.waitForSelector("html");
-    const html = await page.content(); // html 소스 가져옴
+    const html = await page.content();
 
-    const $ = cheerio.load(html, { decodeEntities: false }); //한글 변환
+    const $ = cheerio.load(html, { decodeEntities: false });
     const elements = $("small"); // small 태그 전부 가져옴
 
     supplyInfo = {
@@ -137,4 +137,4 @@ const xeroxIV2060 = async (page, printer) => {
   return supplyInfo;  
 };
 
-export { xeroxDP3055, xeroxII3005, xeroxII3007, xeroxIV2060 };
+export { xeroxDP3055, xeroxII3005, xeroxIII3007, xeroxIV2060 };
